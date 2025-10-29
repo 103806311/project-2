@@ -46,8 +46,8 @@ $result = mysqli_query($conn, $sql);
 <body>
 
     <body>
-        <?php include('inc/topNav.inc'); ?>
-        <?php include('inc/nav.inc'); ?>
+        <?php include('topNav.inc'); ?>
+        <?php include('nav.inc'); ?>
 
         <div class="hero-text-section">
             <h1 class="hero-phrase">Featured <span style="color: #ff4c4c;">Jobs</span></h1>

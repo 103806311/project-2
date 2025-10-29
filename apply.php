@@ -2,7 +2,6 @@
 <html lang="en">
 
 <!-- Head section is unique for each page (links to separate style css, and has separate titles), hence not added as an inc-->
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="NIWS Recruitment - Apply for Job Opportunities">
@@ -17,10 +16,10 @@
 
 <body>
 
-    <?php include('inc/topNav.inc'); ?>
+    <?php include('topNav.inc'); ?>
 
     <header class="hero-section">
-            <?php include('inc/nav.inc'); ?>
+            <?php include('nav.inc'); ?>
 
             
 <!-- Hero section for apply page -->
@@ -29,7 +28,7 @@
             <p class="hero-text hero-text2">
                 Want something else? explore our many job opportunities!</p>
 
-            <button class="more"><a href="about.html">Featured jobs</a></button>
+            <button class="more"><a href="jobs.php">Featured jobs</a></button>
 
         </div>
 
@@ -111,7 +110,7 @@
         </form>
     </main>
 
-    <?php include('inc/footer.inc'); ?>
+    <?php include('footer.inc'); ?>
 
 </body>
 

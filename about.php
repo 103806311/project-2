@@ -22,13 +22,13 @@ require_once('settings.php');
 
     <!--Main Navigation bar-->
     <header class="hero-section">
-        <?php include('inc/nav.inc'); ?>
+        <?php include('nav.inc'); ?>
 
         <div class="hero-text-section">
             <h1 class="hero-phrase">About <span style="color: #ff4c4c;">Us</span></h1>
 
             <figure class="group-photo">
-                <img src="assets/IMG_8348.webp">
+                <img src="images/IMG_8348.webp">
                 <figcaption>Our great team!</figcaption>
             </figure>
 
@@ -123,7 +123,7 @@ require_once('settings.php');
 
 
 
-    <?php include('inc/footer.inc'); ?>
+    <?php include('footer.inc'); ?>
 
 
 

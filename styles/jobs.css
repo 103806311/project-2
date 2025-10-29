@@ -17,7 +17,7 @@ body {
     padding: 0;
     color: #262626;
     background: #f6f5ff;
-    background-image: url(../assets/photo.jpg);
+    background-image: url(../styles/images/photo.jpg);
 }
 
 img { 
@@ -98,7 +98,7 @@ img {
 
 /* Hero section */
 .hero-section {
-    background-image: url(../assets/photo.jpg);
+    /* background-image: url(../styles/images/photo.jpg); */
     background-size: cover;
     /* background: #ff4c4c; */
     /* height: 500px; */

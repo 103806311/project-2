@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 29, 2025 at 08:43 AM
+-- Generation Time: Oct 29, 2025 at 11:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -26,67 +26,40 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `about`
 --
+-- Error reading structure for table recruitment_portal.about: #1142 - SHOW command denied to user ''@'localhost' for table `recruitment_portal`.`about`
+-- Error reading data for table recruitment_portal.about: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `recruitment_portal`.`about`' at line 1
 
-CREATE TABLE `about` (
-  `id` int(11) NOT NULL,
-  `member_name` varchar(50) NOT NULL,
-  `contribution_part1` text NOT NULL,
-  `contribution_part2` text NOT NULL,
-  `quote` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `about`
+-- Table structure for table `eoi`
 --
+-- Error reading structure for table recruitment_portal.eoi: #1142 - SHOW command denied to user ''@'localhost' for table `recruitment_portal`.`eoi`
+-- Error reading data for table recruitment_portal.eoi: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `recruitment_portal`.`eoi`' at line 1
 
-INSERT INTO `about` (`id`, `member_name`, `contribution_part1`, `contribution_part2`, `quote`) VALUES
-(1, 'Mohammad Maruf Haider', 'Home and about - HTML, CSS and responsiveness. Header and footer design for all pages for uniformity', '', ''),
-(2, 'Elias Majaliwa', 'Management and Apply page - Full Gitgub and Jira management, Structure of pages, HTML and CSS for Apply form.', '', 'Onwards'),
-(3, 'Mahin Khalil', 'Jobs page - HTML, CSS and responsiveness of jobs page.', '', '');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+-- Error reading structure for table recruitment_portal.jobs: #1142 - SHOW command denied to user ''@'localhost' for table `recruitment_portal`.`jobs`
+-- Error reading data for table recruitment_portal.jobs: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `recruitment_portal`.`jobs`' at line 1
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `process_eoi`
+--
+-- Error reading structure for table recruitment_portal.process_eoi: #1142 - SHOW command denied to user ''@'localhost' for table `recruitment_portal`.`process_eoi`
+-- Error reading data for table recruitment_portal.process_eoi: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `recruitment_portal`.`process_eoi`' at line 1
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
-
-CREATE TABLE `users` (
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`username`, `password`) VALUES
-('Admin', 'Admin');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `about`
---
-ALTER TABLE `about`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `about`
---
-ALTER TABLE `about`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+-- Error reading structure for table recruitment_portal.users: #1142 - SHOW command denied to user ''@'localhost' for table `recruitment_portal`.`users`
+-- Error reading data for table recruitment_portal.users: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `recruitment_portal`.`users`' at line 1
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

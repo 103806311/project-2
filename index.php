@@ -15,12 +15,12 @@
 
 
 <body>
-    <?php include('inc/topNav.inc'); ?>
+    <?php include('topNav.inc'); ?>
 
 
   <!-- Hero section (different content here for each page) -->
     <header class="hero-section">
-        <?php include('inc/nav.inc'); ?>
+        <?php include('nav.inc'); ?>
 
 
         <div class="hero-text-section">
@@ -33,7 +33,7 @@
             <p class="hero-text hero-text2">
                 Explore our many job opportunities!</p>
 
-            <button class="more"> <a href="about.html">Learn more</a></button>
+            <button class="more"> <a href="about.php">Learn more</a></button>
 
         </div>
 
@@ -69,7 +69,7 @@
 
     </main>
 
-    <?php include('inc/footer.inc'); ?>
+    <?php include('footer.inc'); ?>
 
   
 </body>
