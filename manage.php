@@ -12,20 +12,17 @@ if (!isset($_SESSION['username'])) {
 
 // sorting actions
 
-if (isset($_POST['sort_results'])) {
-    // Sort by chosen field
-    $field = $_POST['sort_field'];
-    $sql = "SELECT * FROM eoi ORDER BY $field DESC";
-} elseif (isset($_POST['sort_by_reference']) && !empty($_POST['job_reference'])) {
+
+if (isset($_POST['sort_by_reference']) && !empty($_POST['job_reference'])) {
     // Filter by job reference
     $job_ref = mysqli_real_escape_string($conn, $_POST['job_reference']);
-    $sql = "SELECT * FROM eoi WHERE job_reference='$job_ref' ORDER BY eoi_number ASC";
+    $sql = "SELECT * FROM process_eoi WHERE jobRef='$job_ref' ORDER BY eoiNumber ASC";
 } elseif (isset($_POST['list_all'])) {
     // Default list all
-    $sql = "SELECT * FROM eoi ORDER BY eoi_number ASC";
+    $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
 } else {
     // Page loaded first time
-    $sql = "SELECT * FROM eoi ORDER BY eoi_number ASC";
+    $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
 }
 
 $result = mysqli_query($conn, $sql);
@@ -38,9 +35,18 @@ $result = mysqli_query($conn, $sql);
 <head>
     <title>Manager Dashboard</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/manage.css">
 </head>
 
 <body>
+    <?php include('inc/topNav.inc'); ?>
+    <?php include('inc/nav.inc'); ?>
+
+    <div class="hero-text-section">
+        <h1 class="hero-phrase">Manager <span style="color: #ff4c4c;">Dashboard</span></h1>
+    </div>
+
+
 
 
 
@@ -60,15 +66,6 @@ $result = mysqli_query($conn, $sql);
                 <input type="submit" name="sort_by_reference" value="sort by Reference">
                 <input type="submit" name="list_all" value="List All EOIs">
 
-                <!-- sort by field -->
-                <select name="sort_field">
-                    <option value="eoi_number">EOI Number</option>
-                    <option value="job_reference">Job Reference</option>
-                    <option value="first_name">First Name</option>
-                    <option value="last_name">Last Name</option>
-                    <option value="status">Status</option>
-                </select>
-                <!-- <input type="submit" name="sort_results" value="Sort"> -->
             </form>
 
         </section>
@@ -91,10 +88,10 @@ $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row['eoi_number'] . "</td>";
-                        echo "<td>" . $row['job_reference'] . "</td>";
-                        echo "<td>" . $row['first_name'] . "</td>";
-                        echo "<td>" . $row['last_name'] . "</td>";
+                        echo "<td>" . $row['eoiNumber'] . "</td>";
+                        echo "<td>" . $row['jobRef'] . "</td>";
+                        echo "<td>" . $row['firstName'] . "</td>";
+                        echo "<td>" . $row['lastName'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['phone'] . "</td>";
                         echo "<td>" . $row['status'] . "</td>";
