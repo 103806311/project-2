@@ -29,30 +29,6 @@ $phone = clean_input($_POST['phone']);
 $skills = !empty($_POST['skills']) ? implode(', ', $_POST['skills']) : '';
 $otherSkills = clean_input($_POST['otherSkills']);
 
-// Create table if not exists
-$table_sql = "CREATE TABLE IF NOT EXISTS eoi (
-    EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-    jobRef VARCHAR(5) NOT NULL,
-    firstName VARCHAR(20) NOT NULL,
-    lastName VARCHAR(20) NOT NULL,
-    dob DATE NOT NULL,
-    gender ENUM('male','female','other') NOT NULL,
-    street VARCHAR(40) NOT NULL,
-    suburb VARCHAR(40) NOT NULL,
-    state VARCHAR(3) NOT NULL,
-    postcode VARCHAR(10) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    skills VARCHAR(255),
-    otherSkills TEXT,
-    submissionDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;";
-
-if (!$conn->query($table_sql)) {
-    die("Error creating table: " . $conn->error);
-}
-
-// Insert sanitized data
 $stmt = $conn->prepare("INSERT INTO eoi (jobRef, firstName, lastName, dob, gender, street, suburb, state, postcode, email, phone, skills, otherSkills) 
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param(
