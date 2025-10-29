@@ -11,12 +11,31 @@ if (!isset($_SESSION['username'])) {
 
 
 // sorting actions
-
-
 if (isset($_POST['sort_by_reference']) && !empty($_POST['job_reference'])) {
     // Filter by job reference
     $job_ref = mysqli_real_escape_string($conn, $_POST['job_reference']);
     $sql = "SELECT * FROM process_eoi WHERE jobRef='$job_ref' ORDER BY eoiNumber ASC";
+
+} elseif (isset($_POST['sort_by_name'])) {
+    // Filter by name
+    $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
+
+    // Build query based on what was provided
+    if (!empty($first_name) && !empty($last_name)) {
+        // Both names provided
+        $sql = "SELECT * FROM process_eoi WHERE firstName = '$first_name' AND lastName LIKE '%$last_name%' ORDER BY eoiNumber ASC";
+    } elseif (!empty($first_name)) {
+        // Only first name
+        $sql = "SELECT * FROM process_eoi WHERE firstName = '$first_name' ORDER BY eoiNumber ASC";
+    } elseif (!empty($last_name)) {
+        // Only last name
+        $sql = "SELECT * FROM process_eoi WHERE lastName = '$last_name' ORDER BY eoiNumber ASC";
+    } else {
+        // No name provided, list all
+        $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
+    }
+
 } elseif (isset($_POST['list_all'])) {
     // Default list all
     $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
@@ -62,12 +81,18 @@ $result = mysqli_query($conn, $sql);
 
         <section class="sorting">
             <form method="post" action="manage.php">
+                <!-- Job Reference Filter -->
                 <input type="text" name="job_reference" placeholder="Enter job reference">
-                <input type="submit" name="sort_by_reference" value="sort by Reference">
+                <input type="submit" name="sort_by_reference" value="Sort by Reference">
+
+                <!-- Name Filter -->
+                <input type="text" name="first_name" placeholder="Enter first name">
+                <input type="text" name="last_name" placeholder="Enter last name">
+                <input type="submit" name="sort_by_name" value="Sort by Name">
+
+                <!-- List All -->
                 <input type="submit" name="list_all" value="List All EOIs">
-
             </form>
-
         </section>
 
         <table>

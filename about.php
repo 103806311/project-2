@@ -3,14 +3,24 @@ require_once('settings.php');
 ?>
 
 
-<?php include('inc/about/header.inc'); ?>
+<!-- Head section is unique for each page (links to separate style css, and has separate titles), hence not added as an inc-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/about.css">
+    <title>About page</title>
+</head>
+
+
 
 <body>
     <!-- top nav bar -->
     <?php include('inc/topNav.inc'); ?>
 
-    <!--Navigation bar-->
-
+    <!--Main Navigation bar-->
     <header class="hero-section">
         <?php include('inc/nav.inc'); ?>
 
@@ -31,7 +41,12 @@ require_once('settings.php');
     <main>
         <section class="about-us">
             <!-- team name and group details -->
-            <?php include('inc/about/teamDetails.inc'); ?>
+            <h2 class="about-us-title">Our Team Details</h2>
+            <h3 class="about-us-title2">Group Information</h3>
+            <ul class="about-us-details">
+                <li><strong>Group Name:</strong> Group 4</li>
+                <li><strong>Class Day/Time:</strong> Thursday 2:30 pm</li>
+            </ul>
 
             <h3 class="about-us-title2">Member Contributions</h3>
             <dl>
@@ -57,13 +72,51 @@ require_once('settings.php');
                 ?>
             </dl>
 
+            <!-- Fun facts table -->
+            <h2 class="about-us-title fun-facts">Fun Facts</h2>
 
-            <?php include('inc/about/facts.inc'); ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th><em>Name</em></th>
+                        <th><em>Dream Job</em></th>
+                        <th><em>Coding Snack</em></th>
+                        <th><em>Hometown</em></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Elias</td>
+                        <td>Indefinite Vacation</td>
+                        <td>Red Frogs</td>
+                        <td>Uvira, Congo</td>
+                    </tr>
+                    <tr>
+                        <td>Mahin</td>
+                        <td>Data Analyst</td>
+                        <td>Popcorn</td>
+                        <td>Melbourne</td>
+                    </tr>
+                    <tr>
+                        <td>Mohammad Maruf Haider</td>
+                        <td>Mechatronics Engineer</td>
+                        <td>Mineral water</td>
+                        <td>Narayanganj, Bangladesh</td>
+                    </tr>
+                </tbody>
+            </table>
 
 
         </section>
+        <!-- aside student ids -->
+        <aside class="student-ids">
+            <h3 class="about-us-title">Student IDs</h3>
+            <p><strong>Elias:</strong> 106283742</p>
+            <p><strong>Mahin:</strong> 105913569</p>
+            <p><strong>Haider:</strong> 103806311</p>
+        </aside>
 
-        <?php include('inc/about/id.inc'); ?>
+
 
 
     </main>

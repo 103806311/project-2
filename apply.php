@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Head section is unique for each page (links to separate style css, and has separate titles), hence not added as an inc-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="NIWS Recruitment - Apply for Job Opportunities">

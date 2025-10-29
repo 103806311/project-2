@@ -11,6 +11,7 @@ $sql = "SELECT * FROM jobs";
 $result = mysqli_query($conn, $sql);
 ?>
 
+<!-- Head section is unique for each page (links to separate style css, and has separate titles), hence not added as an inc-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,6 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NIWS Recruitment - Jobs</title>
     <link rel="stylesheet" href="./styles/jobs.css">
-    <link rel="stylesheet" href="./styles/common.css">
     <style>
         aside.compliance {
             width: 25%;
@@ -109,7 +109,12 @@ $result = mysqli_query($conn, $sql);
             </aside>
         </main>
 
-        <?php include("footer.inc"); ?>
+        <!-- jobs page has its own simplified footer -->
+        <footer>
+        <p>&copy; 2025 NIWS Recruitment |
+            <a href="mailto:info@niws.com">info@niws.com</a>
+        </p>
+    </footer>
 
     </body>
 
