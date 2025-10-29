@@ -29,9 +29,11 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
 
-<?php include("header.inc"); ?>
-<?php include("nav.inc"); ?>
+<?php include('inc/header.inc'); ?>
+<body>
 
+    <?php include('inc/topNav.inc'); ?>
+    <?php include('inc/nav.inc'); ?>
 <main class="main-content">
 
     <section class="page-intro" aria-labelledby="intro-title">

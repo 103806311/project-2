@@ -1,16 +1,13 @@
 <?php
-// our eoi php 
-
-
 require_once 'settings.php';
 
-
+// Block direct access
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['jobRef'])) {
     header('Location: apply.php');
     exit();
 }
 
-
+// Sanitize input
 function clean_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
@@ -28,12 +25,36 @@ $email = clean_input($_POST['email']);
 $phone = clean_input($_POST['phone']);
 $skills = !empty($_POST['skills']) ? implode(', ', $_POST['skills']) : '';
 $otherSkills = clean_input($_POST['otherSkills']);
+$status = clean_input($_POST['status']); // new field
 
-$stmt = $conn->prepare("INSERT INTO eoi (jobRef, firstName, lastName, dob, gender, street, suburb, state, postcode, email, phone, skills, otherSkills) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+// Ensure table exists
+$conn->query("
+CREATE TABLE IF NOT EXISTS process_eoi (
+    eoiNumber INT AUTO_INCREMENT PRIMARY KEY,
+    jobRef VARCHAR(5) NOT NULL,
+    firstName VARCHAR(20) NOT NULL,
+    lastName VARCHAR(20) NOT NULL,
+    dob DATE NOT NULL,
+    gender VARCHAR(10),
+    street VARCHAR(40),
+    suburb VARCHAR(40),
+    state VARCHAR(3),
+    postcode VARCHAR(4),
+    email VARCHAR(50),
+    phone VARCHAR(12),
+    skills VARCHAR(100),
+    otherSkills TEXT,
+    status VARCHAR(10) DEFAULT 'New'
+)
+");
+
+// Insert data
+$stmt = $conn->prepare("INSERT INTO process_eoi 
+(jobRef, firstName, lastName, dob, gender, street, suburb, state, postcode, email, phone, skills, otherSkills, status)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param(
-    "sssssssssssss",
-    $jobRef, $firstName, $lastName, $dob, $gender, $street, $suburb, $state, $postcode, $email, $phone, $skills, $otherSkills
+    "ssssssssssssss",
+    $jobRef, $firstName, $lastName, $dob, $gender, $street, $suburb, $state, $postcode, $email, $phone, $skills, $otherSkills, $status
 );
 
 if ($stmt->execute()) {
