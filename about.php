@@ -3,14 +3,30 @@ require_once('settings.php');
 ?>
 
 
-<?php include('inc/header.inc'); ?>
+<?php include('inc/about/header.inc'); ?>
 
 <body>
     <!-- top nav bar -->
     <?php include('inc/topNav.inc'); ?>
 
     <!--Navigation bar-->
-    <?php include('inc/nav.inc'); ?>
+
+    <header class="hero-section">
+        <?php include('inc/nav.inc'); ?>
+
+        <div class="hero-text-section">
+            <h1 class="hero-phrase">About <span style="color: #ff4c4c;">Us</span></h1>
+
+            <figure class="group-photo">
+                <img src="assets/IMG_8348.webp">
+                <figcaption>Our great team!</figcaption>
+            </figure>
+
+        </div>
+
+    </header>
+
+
 
     <main>
         <section class="about-us">
@@ -20,7 +36,7 @@ require_once('settings.php');
             <h3 class="about-us-title2">Member Contributions</h3>
             <dl>
                 <?php
-                
+
                 // Fetch all members from the about table
                 $query = "SELECT member_name, contribution_part1, contribution_part2 FROM about";
                 $result = mysqli_query($conn, $query);

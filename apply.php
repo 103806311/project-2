@@ -1,8 +1,39 @@
-<?php include('inc/header.inc'); ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="NIWS Recruitment - Apply for Job Opportunities">
+    <meta name="keywords" content="Jobs, Careers, Recruitment, Application Form, NIWS Recruitment">
+    <meta name="author" content="NIWS Recruitment Team">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIWS Recruitment - Apply</title>
+    <link rel="stylesheet" href="styles/apply.css">
+
+
+</head>
+
 <body>
 
     <?php include('inc/topNav.inc'); ?>
-    <?php include('inc/nav.inc'); ?>
+
+    <header class="hero-section">
+            <?php include('inc/nav.inc'); ?>
+
+            
+<!-- Hero section for apply page -->
+        <div class="hero-text-section">
+            <h1 class="hero-phrase">Apply <span style="color: #ff4c4c;">today</span></h1>
+            <p class="hero-text hero-text2">
+                Want something else? explore our many job opportunities!</p>
+
+            <button class="more"><a href="about.html">Featured jobs</a></button>
+
+        </div>
+
+
+    </header>
+
 
     <main>
         <h3>Job Application Form</h3>
@@ -81,9 +112,5 @@
     <?php include('inc/footer.inc'); ?>
 
 </body>
+
 </html>
-
-
-
-
-
