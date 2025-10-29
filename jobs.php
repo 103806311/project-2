@@ -16,11 +16,7 @@ $result = mysqli_query($conn, $sql);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="NIWS Recruitment - Explore job opportunities in IT and Technology">
-    <meta name="keywords" content="Jobs, Careers, Recruitment, Hiring, IT, Technology, NIWS Recruitment">
-    <meta name="author" content="NIWS Recruitment Team">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php include('header.inc'); ?>
     <title>NIWS Recruitment - Jobs</title>
     <link rel="stylesheet" href="./styles/jobs.css">
     <style>

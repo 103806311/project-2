@@ -8,8 +8,7 @@ require_once('settings.php');
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include('header.inc'); ?>
     <link rel="stylesheet" href="styles/about.css">
     <title>About page</title>
 </head>

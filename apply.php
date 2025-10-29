@@ -3,11 +3,7 @@
 
 <!-- Head section is unique for each page (links to separate style css, and has separate titles), hence not added as an inc-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="NIWS Recruitment - Apply for Job Opportunities">
-    <meta name="keywords" content="Jobs, Careers, Recruitment, Application Form, NIWS Recruitment">
-    <meta name="author" content="NIWS Recruitment Team">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include('header.inc'); ?>
     <title>NIWS Recruitment - Apply</title>
     <link rel="stylesheet" href="styles/apply.css">
 
