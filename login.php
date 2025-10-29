@@ -1,23 +1,24 @@
-
 <?php
 session_start();
 require_once("settings.php");
 
 $error = ""; // to store error messages
 
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get input and trim spaces
+    // get input and trim spaces (not using the clean_input() function as trim alone works here)
     $user = trim($_POST['username']);
     $pass = trim($_POST['password']);
 
-    // Query the users table
+    // building sql to query the user table
     $query = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) == 1) {
         // Login successful
         $_SESSION['username'] = $user;
-        header("Location: manage.php"); // Redirect to dashboard
+        header("Location: manage.php"); // redirect to dashboard
         exit();
     } else {
         // Login failed
@@ -28,10 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Manager Login</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
     <div class="login-container">
         <h2>Dashboard Login</h2>
@@ -41,14 +44,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         ?>
         <form method="POST" action="login.php">
-            <label>Username:</label>
-            <input type="text" name="username" required>
-            <br>
-            <label>Password:</label>
-            <input type="password" name="password" required>
-            <br>
+            <div>
+                <label>Username:</label>
+                <input type="text" name="username" required>
+
+                <label>Password:</label>
+                <input type="password" name="password" required>
+               
+            </div>
+
             <input type="submit" value="Login">
+
+             <p><a href="index.php">Return home</a></p>
         </form>
     </div>
 </body>
+
 </html>

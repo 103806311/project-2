@@ -11,7 +11,7 @@ $sql = "SELECT * FROM jobs";
 $result = mysqli_query($conn, $sql);
 ?>
 
-<!-- Head section is unique for each page (links to separate style css, and has separate titles), hence not added as an inc-->
+<!-- Head section is unique for each page (links to separate style css, and has separate titles), hence only partially addedas inc-->
 <!DOCTYPE html>
 <html lang="en">
 

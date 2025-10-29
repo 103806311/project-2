@@ -53,13 +53,14 @@ $result = mysqli_query($conn, $sql);
 
 <head>
     <title>Manager Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
     <link rel="stylesheet" type="text/css" href="styles/manage.css">
+
 </head>
 
 <body>
-    <?php include('inc/topNav.inc'); ?>
-    <?php include('inc/nav.inc'); ?>
+    <?php include('topNav.inc'); ?>
+    <?php include('nav.inc'); ?>
 
     <div class="hero-text-section">
         <h1 class="hero-phrase">Manager <span style="color: #ff4c4c;">Dashboard</span></h1>
@@ -131,6 +132,9 @@ $result = mysqli_query($conn, $sql);
             </tbody>
         </table>
     </main>
+
+
+    <?php include('footer.inc'); ?>
 
 
 

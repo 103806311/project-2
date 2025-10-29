@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- The head contains slightly different information for each page -->
+<!-- Head section is unique for each page (links to separate style css, and has separate titles), hence only partially addedas inc-->
 <head>
     <?php include('header.inc'); ?>
     <title>NIWS Recruitment - Home</title>
