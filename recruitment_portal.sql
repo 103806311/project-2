@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2025 at 02:10 AM
+-- Generation Time: Oct 30, 2025 at 03:32 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -40,9 +40,9 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `member_name`, `contribution_part1`, `contribution_part2`, `quote`) VALUES
-(1, 'Mohammad Maruf Haider', 'Home and about - HTML, CSS and responsiveness. Header and footer design for all pages for uniformity', '', ''),
-(2, 'Elias Majaliwa', 'Management and Apply page - Full Gitgub and Jira management, Structure of pages, HTML and CSS for Apply form.', '', 'Onwards'),
-(3, 'Mahin Khalil', 'Jobs page - HTML, CSS and responsiveness of jobs page.', '', '');
+(1, 'Mohammad Maruf Haider', 'Home page: CSS. About page: full (CSS & HTML). Apply and jobs page: Header and footer. Responsiveness: all pages except jobs page.', 'Task 1 (50%), Task 6, Task 7, Presentation slides and folder structure of GitHub. ', 'Prepare for unforeseen consequences'),
+(2, 'Elias Majaliwa', 'Github deployment, Jira management and initial HTML structure of all pages except about page. Apply page.', 'Task 2, Task 3, Task 4 and Task 5', 'Onwards'),
+(3, 'Mahin Khalil', 'Jobs page - HTML, CSS and responsiveness of jobs page.', 'None', '.....');
 
 -- --------------------------------------------------------
 

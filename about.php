@@ -52,7 +52,7 @@ require_once('settings.php');
                 <?php
 
                 // Fetch all members from the about table
-                $query = "SELECT member_name, contribution_part1, contribution_part2 FROM about";
+                $query = "SELECT member_name, contribution_part1, contribution_part2, quote FROM about";
                 $result = mysqli_query($conn, $query);
 
                 if ($result && mysqli_num_rows($result) > 0) {
@@ -60,10 +60,11 @@ require_once('settings.php');
                         $name = $row['member_name'];
                         $part1 = $row['contribution_part1'];
                         $part2 = $row['contribution_part2'];
+                        $quote = $row['quote'];
                         echo "<dt><strong>$name</strong></dt>";
                         echo "<dd>Part 1 contribution: $part1</dd>";
                         echo "<dd>Part 2 contribution: $part2</dd>";
-                        echo "<dd><em>\"\"</em></dd>"; // 
+                        echo "<dd><em>\"$quote\"</em></dd>"; // 
                     }
                 } else {
                     echo "<dd>No member contributions found.</dd>";
