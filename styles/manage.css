@@ -201,7 +201,7 @@ table {
 
 th {
     font-weight: 800;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 5px;
 
 }
@@ -209,7 +209,7 @@ th {
  td {
     padding: 10px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid white;
 
 
 }
