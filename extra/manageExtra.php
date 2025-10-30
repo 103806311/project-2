@@ -14,54 +14,95 @@ if (!isset($_SESSION['username'])) {
 
 
 // handle deleting eois
-//After successful login, First, all eois are shown, ordered by ascending eoi number, as no filters are set.
+//After successful login, First, all eois are shown, ordered by ascending eoi number, as no filters are set. 
 
 
-/// Handle delete eoi quaries
+// Handle delete EOIs by job reference
 if (isset($_POST['delete_eois']) && !empty($_POST['delete_job_ref'])) {
     $delete_job_ref = mysqli_real_escape_string($conn, $_POST['delete_job_ref']);
+
     $delete_sql = "DELETE FROM process_eoi WHERE jobRef='$delete_job_ref'";
     mysqli_query($conn, $delete_sql);
-    header("Location: manage.php");
-    exit();
+
+
 }
 
-// Handle status update quaries
+// status php
+// Handle status update
 if (isset($_POST['update_status'])) {
     $eoi_number = mysqli_real_escape_string($conn, $_POST['eoi_number']);
     $new_status = mysqli_real_escape_string($conn, $_POST['new_status']);
+
     $update_sql = "UPDATE process_eoi SET status='$new_status' WHERE eoiNumber='$eoi_number'";
     mysqli_query($conn, $update_sql);
+
 }
 
-// filtering queires
+
+// sorting actions
 if (isset($_POST['sort_by_reference']) && !empty($_POST['job_reference'])) {
     // Filter by job reference
     $job_ref = mysqli_real_escape_string($conn, $_POST['job_reference']);
+    $_SESSION['active_filter'] = 'job_reference';
+    $_SESSION['job_reference'] = $job_ref;
     $sql = "SELECT * FROM process_eoi WHERE jobRef='$job_ref' ORDER BY eoiNumber ASC";
+
 
 } elseif (isset($_POST['sort_by_name'])) {
     // Filter by name
     $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
     $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
 
+    $_SESSION['active_filter'] = 'name';
+    $_SESSION['first_name'] = $first_name;
+    $_SESSION['last_name'] = $last_name;
+
+
+
+    // Building query based on what was provided as input (the sql changes depending on whether first name, last name or both was entered)
     if (!empty($first_name) && !empty($last_name)) {
-        $sql = "SELECT * FROM process_eoi WHERE firstName='$first_name' AND lastName='$last_name' ORDER BY eoiNumber ASC";
+        $sql = "SELECT * FROM process_eoi WHERE firstName = '$first_name' AND lastName = '$last_name' ORDER BY eoiNumber ASC";
     } elseif (!empty($first_name)) {
-        $sql = "SELECT * FROM process_eoi WHERE firstName='$first_name' ORDER BY eoiNumber ASC";
+        $sql = "SELECT * FROM process_eoi WHERE firstName = '$first_name' ORDER BY eoiNumber ASC";
     } elseif (!empty($last_name)) {
-        $sql = "SELECT * FROM process_eoi WHERE lastName='$last_name' ORDER BY eoiNumber ASC";
+        $sql = "SELECT * FROM process_eoi WHERE lastName = '$last_name' ORDER BY eoiNumber ASC";
     } else {
         $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
     }
 
+
+
+} elseif (isset($_POST['list_all'])) {
+    // Clear filters
+    unset($_SESSION['active_filter']);
+    unset($_SESSION['job_reference']);
+    unset($_SESSION['first_name']);
+    unset($_SESSION['last_name']);
+    $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
+
+} elseif (isset($_POST['update_status']) && isset($_SESSION['active_filter'])) {
+    // Reapply the stored filter after status update
+    if ($_SESSION['active_filter'] == 'job_reference') {
+        $job_ref = $_SESSION['job_reference'];
+        $sql = "SELECT * FROM process_eoi WHERE jobRef='$job_ref' ORDER BY eoiNumber ASC";
+    } elseif ($_SESSION['active_filter'] == 'name') {
+        $first_name = $_SESSION['first_name'];
+        $last_name = $_SESSION['last_name'];
+
+        if (!empty($first_name) && !empty($last_name)) {
+            $sql = "SELECT * FROM process_eoi WHERE firstName = '$first_name' AND lastName = '$last_name' ORDER BY eoiNumber ASC";
+        } elseif (!empty($first_name)) {
+            $sql = "SELECT * FROM process_eoi WHERE firstName = '$first_name' ORDER BY eoiNumber ASC";
+        } elseif (!empty($last_name)) {
+            $sql = "SELECT * FROM process_eoi WHERE lastName = '$last_name' ORDER BY eoiNumber ASC";
+        }
+    }
 } else {
-    // by default list all
+    // Page loaded first time or no filter active
     $sql = "SELECT * FROM process_eoi ORDER BY eoiNumber ASC";
 }
 
 $result = mysqli_query($conn, $sql);
-
 
 ?>
 
@@ -129,7 +170,7 @@ $result = mysqli_query($conn, $sql);
             <tbody>
             <tbody>
                 <?php
-                // here, i create a form to handle status change for every row (entry). its one of the ways to tackle the status update requirement. The eoi number is used tell the server which entry to update, its passed as a hidden input
+                // here, i create a form to handle status change for every row (entry). its one of the ways to tackle the status update requirement
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
@@ -141,17 +182,16 @@ $result = mysqli_query($conn, $sql);
                         echo "<td>" . $row['phone'] . "</td>";
                         echo "<td>" . $row['status'] . "</td>";
                         echo "<td>
-                       <form method='post' action='manage.php' style='display:inline;'>
-                       <input type='hidden' name='eoi_number' value='" . $row['eoiNumber'] . "'>
-                       <select name='new_status'>
-                           <option value='New'>New</option>
-                           <option value='Current'>Current</option>
-                           <option value='Final'>Final</option>
-                        </select>
-                      <input type='submit' name='update_status' value='Update'>
-                      </form>
-                        </td>";
-                
+            <form method='post' action='manage.php' style='display:inline;'>
+            <input type='hidden' name='eoi_number' value='" . $row['eoiNumber'] . "'>
+                <select name='new_status'>
+                    <option value='New'>New</option>
+                    <option value='Current'>Current</option>
+                    <option value='Final'>Final</option>
+                </select>
+                <input type='submit' name='update_status' value='Update'>
+            </form>
+          </td>";
                         echo "</tr>";
                     }
                 } else {
