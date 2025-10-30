@@ -17,7 +17,7 @@ require_once('settings.php');
 
 <body>
     <!-- top nav bar -->
-    <?php include('inc/topNav.inc'); ?>
+    <?php include('topNav.inc'); ?>
 
     <!--Main Navigation bar-->
     <header class="hero-section">
